@@ -37,7 +37,7 @@ menu.addEventListener("click", function(event){
    if(parentButton){
     const name = parentButton.getAttribute("data-name")
     const price = parseFloat(parentButton.getAttribute("data-price"))
-
+    
     // adicionar no carrinho
 
     addToCart(name, price)
@@ -147,7 +147,7 @@ checkoutBtn.addEventListener("click", function(){
             position: "right", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-              background: "#ef4444",
+           
             },
             onClick: function(){} // Callback after click
           }).showToast();
@@ -168,7 +168,7 @@ checkoutBtn.addEventListener("click", function(){
     }).join("")
 
     const message = encodeURIComponent(cartItems)
-    const phone = "67991851966"
+    const phone = "67993289191"
 
     window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
 
@@ -181,7 +181,7 @@ checkoutBtn.addEventListener("click", function(){
 function checkRestaurantOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 24; // boolean true/false
+    return hora >= 11 && hora < 24; // boolean true/false
 
     
 }
@@ -198,9 +198,67 @@ if(isOpen){
 
 }
 
+menu.addEventListener("click", function(event) {
+    let productItem = event.target.closest(".product-item");
+    if (productItem) {
+        // Recupera informações do produto
+        const name = productItem.getAttribute("data-name");
+        const description = productItem.getAttribute("data-description");
+        const image = productItem.getAttribute("data-image");
+        const price = parseFloat(productItem.getAttribute("data-price"));
 
+        // Exibe as informações em algum lugar na página, por exemplo, um modal
+        showProductDetails(name, description, image, price);
+    }
+});
 
+function showProductDetails(name, description, image, price) {
+    // Exibe as informações como preferir, por exemplo, em um modal
+    // Aqui você pode usar bibliotecas como Bootstrap Modal ou implementar um modal personalizado
+    // Por simplicidade, vou apenas exibir um alerta com as informações
+    alert(`Name: ${name}\nDescription: ${description}\nPrice: ${price}\nImage: ${image}`);
+}
 
-
+function showDetails(product) {
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    var details = document.getElementById("productDetails");
+    var products = document.getElementsByClassName("product");
+  
+    // Esconde todos os outros produtos
+    for (var i = 0; i < products.length; i++) {
+      products[i].style.display = "none";
+    }
+  
+    // Aqui você pode adicionar os detalhes do produto que deseja exibir
+    details.innerHTML = product.innerHTML;
+  
+    // Mostra o modal
+    modal.style.display = "block";
+  
+    // Esconde o resumo e mostra os detalhes
+    var summary = details.getElementsByClassName("summary")[0];
+    var detailsText = details.getElementsByClassName("details")[0];
+    summary.style.display = "none";
+    detailsText.style.display = "block";
+  
+    span.onclick = function() {
+      modal.style.display = "none";
+      // Mostra todos os produtos novamente
+      for (var i = 0; i < products.length; i++) {
+        products[i].style.display = "flex";
+      }
+    }
+  
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        // Mostra todos os produtos novamente
+        for (var i = 0; i < products.length; i++) {
+          products[i].style.display = "flex";
+        }
+      }
+    }
+}
 
 

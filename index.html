@@ -206,11 +206,27 @@
       <h2 class="text-center font-bold text-2x1 mb-2">Meu carrinho</h2>
       <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
       <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
-      <p class="font-bold mt-4">Endereço de entrega:</p>
+      <p class="font-bold mt-4">NOME:</p>
       <input
        type="text"
-       placeholder="Digite seu endereço completo"
+       placeholder="Seu nome"
        id="address"
+       class="w-full border-2 p-1 rounded my-1"
+      />
+     
+      <div class="my-1">
+        <label for="midia">Midia fisica ou Midia digital?</label>
+        <select id="midia" class="w-full border-2 p-1 rounded">
+          <option value="fisica">Mídia Física</option>
+          <option value="digital">Mídia Digital</option>
+        </select>
+      </div>
+      
+      <p class="font-bold mt-4">Alguma duvida?</p>
+      <input
+       type="text"
+       placeholder="Escreva aqui?"
+       id="duvida"
        class="w-full border-2 p-1 rounded my-1"
       />
       <div class="wrapper">
@@ -228,10 +244,11 @@
         <div class="option">
           <input value="option3" name="btn" type="radio" class="input">
           <div class="btn">
-            <span class="span">Dinheiro</span>
+            <span class="span">Creditos</span>
           </div>  
         </div>
       </div>
+      
       
       <p class="text-red-500" hidden id="address-warn">Digite seu endereço completo!</p>
       <div class="flex items-center justify-between mt-5 w-full">

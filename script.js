@@ -24,6 +24,10 @@ cartModal.addEventListener("click",function(event){
     }
 })
 
+const selectElement = document.getElementById('midia');
+const selectedValue = selectElement.value;
+console.log(selectedValue); // Isso irá imprimir o valor selecionado (fisica ou digital) no console
+
 
 // fechar pelo botao fechar
 closeModalBtn.addEventListener("click", function(){
